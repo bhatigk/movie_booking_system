@@ -1,20 +1,14 @@
-<div id="<%= dom_id movie %>">
-  <p>
-    <% if movie.poster.attached? %>
-      <%= image_tag movie.poster, class: 'thumbnail' %>
-    <% else %>
-      No poster available
-    <% end %>
-  </p>
+<div class="col-lg-2 mt-4">
+  <div class="card movie-card">
+    <div class="card-body">
+      <%= link_to movie_path(movie), class: "card-link" do %>
+        <%= image_tag url_for(movie.poster), class: 'thumbnail' %>
 
-  <p>
-    <strong>Title:</strong>
-    <%= movie.title %>
-  </p>
-
-  <p>
-    <strong>Genre:</strong>
-    <%= movie.genre %>
-  </p>
-
+        <div class="p-3">
+          <h5 class="card-title"><%= movie.title %></h5>
+          <p class="card-subtitle mb-2 text-muted"><%= movie.genre %> kg</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

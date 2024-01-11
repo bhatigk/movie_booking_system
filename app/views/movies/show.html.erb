@@ -1,9 +1,29 @@
 <p style="color: green"><%= notice %></p>
+<div class="container-fluid">
+  <div class="text-center">
+    <div class="card movie-card">
+      <div class="card-body">
+        <%= image_tag url_for(@movie.poster), class: 'thumbnail' %>
 
-<%= render @movie %>
+        <div class="p-3">
+          <h5 class="card-title"><%= @movie.title %></h5>
+          <p class="card-subtitle mb-2 text-muted"><%= @movie.genre %> kg</p>
+        </div>
 
-<div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
+        <div class="d-flex justify-content-around border-top">
+          <%= button_to edit_movie_path(@movie), class: "border-0 bg-white" do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>  
+    
+          <%= button_to @movie, method: :delete, class: "border-0 bg-white text-danger" do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        </div>
+
+      </div>
+      <div class="card-footer px-2 text-center">
+        <%= link_to "Book Tickets", new_booking_path, class: "fw-bold text-uppercase text text-decoration-none" %>
+      </div>
+    </div>
+  </div>
 </div>
