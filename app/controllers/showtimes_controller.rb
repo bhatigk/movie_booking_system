@@ -1,5 +1,5 @@
 class ShowtimesController < ApplicationController
-  before_action :set_showtime, only: %i[ show edit update destroy ]
+  before_action :set_showtime, only: %i(show edit update destroy)
 
   # GET /showtimes or /showtimes.json
   def index
@@ -7,8 +7,7 @@ class ShowtimesController < ApplicationController
   end
 
   # GET /showtimes/1 or /showtimes/1.json
-  def show
-  end
+  def show; end
 
   # GET /showtimes/new
   def new
@@ -16,8 +15,7 @@ class ShowtimesController < ApplicationController
   end
 
   # GET /showtimes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /showtimes or /showtimes.json
   def create
@@ -58,13 +56,14 @@ class ShowtimesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_showtime
-      @showtime = Showtime.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def showtime_params
-      params.require(:showtime).permit(:timing, :movie_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_showtime
+    @showtime = Showtime.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def showtime_params
+    params.require(:showtime).permit(:timing, :movie_id)
+  end
 end

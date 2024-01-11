@@ -1,5 +1,5 @@
 class SeatsController < ApplicationController
-  before_action :set_seat, only: %i[ show edit update destroy ]
+  before_action :set_seat, only: %i(show edit update destroy)
 
   # GET /seats or /seats.json
   def index
@@ -7,8 +7,7 @@ class SeatsController < ApplicationController
   end
 
   # GET /seats/1 or /seats/1.json
-  def show
-  end
+  def show; end
 
   # GET /seats/new
   def new
@@ -16,8 +15,7 @@ class SeatsController < ApplicationController
   end
 
   # GET /seats/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /seats or /seats.json
   def create
@@ -58,13 +56,14 @@ class SeatsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_seat
-      @seat = Seat.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def seat_params
-      params.require(:seat).permit(:name, :category, :row, :showtime_id, :booked)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_seat
+    @seat = Seat.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def seat_params
+    params.require(:seat).permit(:name, :category, :row, :showtime_id, :booked)
+  end
 end
