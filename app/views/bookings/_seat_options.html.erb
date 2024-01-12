@@ -1,0 +1,11 @@
+<% seats.each do |category, s| %>
+  <div><%= category %></div>
+  <% s.each do |seat| %>
+    <% if @booked_seats.present? and @booked_seats.map(&:to_i).include?(seat.id) %>
+      <i class="fa-solid fa-ban"></i>
+    <% else %>
+      <%= check_box_tag 'booking[seat_numbers][]', seat.id, nil, disabled: false %>
+      <% end %>
+    <%= seat.name %>
+  <% end %> 
+<% end %>

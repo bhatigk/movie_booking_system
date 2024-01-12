@@ -1,9 +1,17 @@
-<h1>New booking</h1>
+<!-- app/views/bookings/new.html.erb -->
+<h1><%= @movie.title %></h1>
 
-<%= render "form", booking: @booking %>
-
-<br>
-
-<div>
-  <%= link_to "Back to bookings", bookings_path %>
-</div>
+<% if @showtime.present? %>
+  <%= render partial: 'bookings/form', locals: { seats: @seats, showtime: @showtime, booking: @booking } %>
+<% else %>
+  <% fetch_showtimes_by_movie(@movie).each do |theater, showtimes| %>
+    <h2><%= theater.name %></h2>
+    <ul>
+      <% showtimes.each do |showtime| %>
+        <li>
+          <%= link_to "#{showtime.timing}", new_movie_booking_path(@movie, showtime_id: showtime.id) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

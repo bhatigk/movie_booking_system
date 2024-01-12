@@ -1,5 +1,6 @@
 class ShowtimesController < ApplicationController
   before_action :set_showtime, only: %i(show edit update destroy)
+  before_action :load_theaters_and_movies, only: %i(new edit create update)
 
   # GET /showtimes or /showtimes.json
   def index
@@ -64,6 +65,11 @@ class ShowtimesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def showtime_params
-    params.require(:showtime).permit(:timing, :movie_id)
+    params.require(:showtime).permit(:timing, :movie_id, :theater_id, :from_date, :to_date)
+  end
+
+  def load_theaters_and_movies
+    @theaters = Theater.all
+    @movies = Movie.all
   end
 end

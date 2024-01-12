@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @booking %>
+  <%= render @booking %>
 
-<div>
-  <%= link_to "Edit this booking", edit_booking_path(@booking) %> |
-  <%= link_to "Back to bookings", bookings_path %>
+  <p>
+    <strong>Seat numbers:</strong>
+    <%= @booking.alloted_seat_numbers %>
+  </p>
 
-  <%= button_to "Destroy this booking", @booking, method: :delete %>
+  <div class="d-flex">
+    <%= link_to "Edit booking", edit_movie_booking_path(@movie, @booking) %> |
+    <%= link_to "Back to bookings", movie_bookings_path(@movie) %> |
+    <%= button_to "Cancel booking", movie_booking_path(@movie, @booking), method: :delete, class: "border-0 bg-white text-danger" %>
+  </div>
 </div>

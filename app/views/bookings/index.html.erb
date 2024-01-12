@@ -1,14 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Bookings</h1>
+<h1>Your Bookings:</h1>
 
 <div id="bookings">
-  <% @bookings.each do |booking| %>
-    <%= render booking %>
-    <p>
-      <%= link_to "Show this booking", booking %>
-    </p>
-  <% end %>
+  <ol class="list-group list-group-numbered">
+    <% @bookings.each do |booking| %>
+      <li class="list-group-item">
+        <%= link_to movie_booking_path(@movie, booking), class: "ms-2" do %>
+          <%= render booking %>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
 </div>
-
-<%= link_to "New booking", new_booking_path %>

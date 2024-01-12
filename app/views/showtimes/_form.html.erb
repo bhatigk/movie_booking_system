@@ -13,12 +13,27 @@
 
   <div>
     <%= form.label :timing, style: "display: block" %>
-    <%= form.datetime_field :timing %>
+    <%= form.select :timing, fetch_time_options, {}, class: "form-select" %>
   </div>
 
-  <div>
-    <%= form.label :movie_id, style: "display: block" %>
-    <%= form.text_field :movie_id %>
+  <div class="field">
+    <%= form.label :theater_id %>
+    <%= form.collection_select :theater_id, @theaters, :id, :name, { prompt: 'Select Theater' }, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :movie_id %>
+    <%= form.collection_select :movie_id, @movies, :id, :title, { prompt: 'Select Movie' }, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :from_date %>
+    <%= form.date_field :from_date, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :to_date %>
+    <%= form.date_field :to_date, class: 'form-control' %>
   </div>
 
   <div>

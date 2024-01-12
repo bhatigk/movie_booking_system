@@ -8,9 +8,12 @@ Rails.application.routes.draw do
 
   resources :theaters
   resources :seats
-  resources :bookings
   resources :showtimes
-  resources :movies
+  resources :movies do
+    resources :bookings do
+      get :seat_options, on: :collection
+    end
+  end
 
   # Defines the root path route ("/")
   root "movies#index"

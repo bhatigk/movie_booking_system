@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_11_121402) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_12_042208) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_11_121402) do
     t.text "seat_numbers", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "show_date"
     t.index ["showtime_id"], name: "index_bookings_on_showtime_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -64,21 +65,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_11_121402) do
     t.string "name"
     t.string "category"
     t.string "row"
-    t.bigint "showtime_id", null: false
-    t.boolean "booked"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["showtime_id"], name: "index_seats_on_showtime_id"
+    t.bigint "theater_id", null: false
+    t.index ["theater_id"], name: "index_seats_on_theater_id"
   end
 
   create_table "showtimes", force: :cascade do |t|
-    t.datetime "timing"
+    t.string "timing"
     t.bigint "movie_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "theaters_id", null: false
+    t.bigint "theater_id", null: false
+    t.date "from_date"
+    t.date "to_date"
     t.index ["movie_id"], name: "index_showtimes_on_movie_id"
-    t.index ["theaters_id"], name: "index_showtimes_on_theaters_id"
+    t.index ["theater_id"], name: "index_showtimes_on_theater_id"
   end
 
   create_table "theaters", force: :cascade do |t|
@@ -104,7 +106,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_11_121402) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "showtimes"
   add_foreign_key "bookings", "users"
-  add_foreign_key "seats", "showtimes"
+  add_foreign_key "seats", "theaters"
   add_foreign_key "showtimes", "movies"
-  add_foreign_key "showtimes", "theaters", column: "theaters_id"
+  add_foreign_key "showtimes", "theaters"
 end
