@@ -54,6 +54,8 @@ gem 'devise'
 # Code analysis tools
 gem 'rails_best_practices', '~> 1.20.0'
 gem 'rubocop', '~> 1.2.0'
+# For authorizations in the application
+gem 'cancancan'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

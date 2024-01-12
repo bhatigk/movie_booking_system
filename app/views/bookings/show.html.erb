@@ -1,16 +1,13 @@
 <div class="container">
   <p style="color: green"><%= notice %></p>
 
-  <%= render @booking %>
-
-  <p>
-    <strong>Seat numbers:</strong>
-    <%= @booking.alloted_seat_numbers %>
-  </p>
-
-  <div class="d-flex">
-    <%= link_to "Edit booking", edit_movie_booking_path(@movie, @booking) %> |
-    <%= link_to "Back to bookings", movie_bookings_path(@movie) %> |
-    <%= button_to "Cancel booking", movie_booking_path(@movie, @booking), method: :delete, class: "border-0 bg-white text-danger" %>
+  <div class="text-center">
+    <%= render @booking %>
+    <div class="d-flex justify-content-center">
+      <% if current_user.admin? %>
+        <%= link_to "Edit booking", edit_movie_booking_path(@movie, @booking) %> |
+      <% end %>
+      <%= button_to "Cancel booking", movie_booking_path(@movie, @booking), method: :delete, class: "border-0 bg-white text-danger" %>
+    </div>
   </div>
 </div>

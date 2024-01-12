@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @showtime %>
+  <%= render @showtime %>
 
-<div>
-  <%= link_to "Edit this showtime", edit_showtime_path(@showtime) %> |
-  <%= link_to "Back to showtimes", showtimes_path %>
+  <div>
+    <%= link_to "Edit this showtime", edit_showtime_path(@showtime) %> |
+    <%= link_to "Back to showtimes", showtimes_path %>
 
-  <%= button_to "Destroy this showtime", @showtime, method: :delete %>
+    <%= button_to "Destroy this showtime", @showtime, method: :delete, class: "btn btn-danger mt-4" %>
+  </div>
 </div>

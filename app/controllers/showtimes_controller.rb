@@ -1,5 +1,5 @@
 class ShowtimesController < ApplicationController
-  before_action :set_showtime, only: %i(show edit update destroy)
+  load_and_authorize_resource
   before_action :load_theaters_and_movies, only: %i(new edit create update)
 
   # GET /showtimes or /showtimes.json
@@ -57,11 +57,6 @@ class ShowtimesController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_showtime
-    @showtime = Showtime.find(params[:id])
-  end
 
   # Only allow a list of trusted parameters through.
   def showtime_params

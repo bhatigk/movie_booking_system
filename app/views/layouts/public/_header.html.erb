@@ -9,14 +9,33 @@
     <div class="me-4">
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
+          <% if can? :manage, Theater %>
+            <li class="nav-item">
+              <%= link_to "Theater", new_theater_path, class: "nav-link" %>
+            </li>
+          <% end %>
+
+          <% if can? :manage, Showtime %>
+            <li class="nav-item">
+              <%= link_to "Show", new_showtime_path, class: "nav-link" %>
+            </li>
+          <% end %>
+
+          <% if can? :manage, Movie %>
+            <li class="nav-item">
+              <%= link_to "Movie", new_movie_path, class: "nav-link" %>
+            </li>
+          <% end %>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_user&.email %>
               <i class="fas fa-user"></i>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li>
                 <% if !user_signed_in? %>
-                  <%= link_to "Login", new_user_session_path, class: "link-underline link-underline-opacity-25" %>
+                  <%= link_to "Login", new_user_session_path, class: "btn" %>
                 <% else %>
                   <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn" %>
                 <% end %>

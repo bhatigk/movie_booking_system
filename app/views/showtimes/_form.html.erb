@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :timing, style: "display: block" %>
+  <div class="field mb-4">
+    <%= form.label :timing, class: "form-label" %>
     <%= form.select :timing, fetch_time_options, {}, class: "form-select" %>
   </div>
 
-  <div class="field">
-    <%= form.label :theater_id %>
+  <div class="field mb-4">
+    <%= form.label :theater_id, class: "form-label" %>
     <%= form.collection_select :theater_id, @theaters, :id, :name, { prompt: 'Select Theater' }, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :movie_id %>
+  <div class="field mb-4">
+    <%= form.label :movie_id, class: "form-label" %>
     <%= form.collection_select :movie_id, @movies, :id, :title, { prompt: 'Select Movie' }, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :from_date %>
+  <div class="field mb-4">
+    <%= form.label :from_date, class: "form-label" %>
     <%= form.date_field :from_date, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :to_date %>
+  <div class="field mb-4">
+    <%= form.label :to_date, class: "form-label" %>
     <%= form.date_field :to_date, class: 'form-control' %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit :create, class: "btn btn-dark" %>
   </div>
 <% end %>

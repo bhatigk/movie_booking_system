@@ -1,6 +1,5 @@
 class SeatsController < ApplicationController
-  before_action :set_seat, only: %i(show edit update destroy)
-
+  load_and_authorize_resource
   # GET /seats or /seats.json
   def index
     @seats = Seat.all
@@ -56,11 +55,6 @@ class SeatsController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_seat
-    @seat = Seat.find(params[:id])
-  end
 
   # Only allow a list of trusted parameters through.
   def seat_params

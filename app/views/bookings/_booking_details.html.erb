@@ -1,0 +1,10 @@
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p><%= movie.title %></p>
+  </blockquote>
+  <% if showtime.present? %>
+    <figcaption class="blockquote-footer">
+      <p><%= booking.theater_name %></p>
+    </figcaption>
+  <% end %>
+</figure>

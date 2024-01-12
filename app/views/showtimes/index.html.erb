@@ -1,14 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Showtimes</h1>
+  <h1>Showtimes</h1>
 
-<div id="showtimes">
-  <% @showtimes.each do |showtime| %>
-    <%= render showtime %>
-    <p>
-      <%= link_to "Show this showtime", showtime %>
-    </p>
-  <% end %>
+  <div id="showtimes">
+    <% @showtimes.each do |showtime| %>
+      <%= link_to showtime do %>
+        <%= render showtime %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= link_to "New showtime", new_showtime_path %>
 </div>
-
-<%= link_to "New showtime", new_showtime_path %>

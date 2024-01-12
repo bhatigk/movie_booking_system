@@ -1,14 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Theaters</h1>
+  <h1>Theaters</h1>
 
-<div id="theaters">
-  <% @theaters.each do |theater| %>
-    <%= render theater %>
-    <p>
-      <%= link_to "Show this theater", theater %>
-    </p>
-  <% end %>
+  <div id="theaters" class="d-flex">
+    <% @theaters.each do |theater| %>
+      <%= link_to theater do %>
+        <%= render theater %>
+      <% end %>
+    <% end %>
+  </div>
+  <%= link_to "New theater", new_theater_path, class: "btn btn-dark mt-4" %>
 </div>
 
-<%= link_to "New theater", new_theater_path %>

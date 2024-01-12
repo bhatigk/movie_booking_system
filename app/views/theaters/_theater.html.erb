@@ -1,12 +1,8 @@
-<div id="<%= dom_id theater %>">
-  <p>
-    <strong>Name:</strong>
-    <%= theater.name %>
-  </p>
+<div class="card theater-card p-4 m-2">
 
-  <p>
-    <strong>City:</strong>
-    <%= theater.city %>
-  </p>
-
+  <div id="<%= dom_id theater %>">
+    <p>
+      <%= "#{theater.name}, #{theater.city}" %>
+    </p>
+  </div>
 </div>

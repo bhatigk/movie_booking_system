@@ -3,16 +3,21 @@
     <%= form.hidden_field :user_id, value: current_user.id %>
     <%= form.hidden_field :showtime_id, value: showtime.id %>
 
-    <div class="field">
-      <%= form.label :show_date %>
-      <%= form.select :show_date, options_for_select(showtime.available_dates, @booking.show_date), :class => 'form-control' %>
+    <div class="row mb-4">
+      <div class="col-3">
+        <%= form.label "Select Date", class: "form-label" %>
+        <%= form.select :show_date, options_for_select(showtime.available_dates, @booking.show_date), {}, class: 'form-select show-date-select' %>
+      </div>
+      <div class="col-1 d-flex align-items-end">
+        <span class="mb-2"> <%= showtime.timing%></span>
+      </div>
     </div>
-
-    <div id="booking-seat-options">
+ 
+    <div id="booking-seat-options mt-4">
       <%= render partial: 'bookings/seat_options', locals: { seats: seats, showtime: showtime } %>
     </div>
 
-    <%= form.submit %>
+    <%= form.submit "Book Ticket", class: "btn btn-primary" %>
   <% end %>
 
 <% else %>

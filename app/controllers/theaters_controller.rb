@@ -1,5 +1,5 @@
 class TheatersController < ApplicationController
-  before_action :set_theater, only: %i(show edit update destroy)
+  load_and_authorize_resource
 
   # GET /theaters or /theaters.json
   def index
@@ -56,11 +56,6 @@ class TheatersController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_theater
-    @theater = Theater.find(params[:id])
-  end
 
   # Only allow a list of trusted parameters through.
   def theater_params

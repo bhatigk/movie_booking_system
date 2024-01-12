@@ -1,11 +1,25 @@
-<% seats.each do |category, s| %>
-  <div><%= category %></div>
-  <% s.each do |seat| %>
-    <% if @booked_seats.present? and @booked_seats.map(&:to_i).include?(seat.id) %>
-      <i class="fa-solid fa-ban"></i>
-    <% else %>
-      <%= check_box_tag 'booking[seat_numbers][]', seat.id, nil, disabled: false %>
-      <% end %>
-    <%= seat.name %>
-  <% end %> 
+<% seats.each do |category, records| %>
+  <table class="table table-dark">
+    <tbody>
+      <tr>
+        <td>
+          <span><%= category %></span>
+          <% records.each_slice(10) do |seat_rows| %>
+            <div class="row p-2">
+              <% seat_rows.each do |seat| %>
+                <div class="p-2 col">
+                  <% if @booked_seats.present? and @booked_seats.map(&:to_i).include?(seat.id) %>
+                    <i class="fa-solid fa-ban"></i>
+                  <% else %>
+                    <%= check_box_tag 'booking[seat_numbers][]', seat.id, nil, disabled: false %>
+                  <% end %>
+                  <%= seat.name %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 <% end %>

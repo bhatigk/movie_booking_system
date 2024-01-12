@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: %i(show edit update destroy)
+  load_and_authorize_resource
   skip_before_action :authenticate_user!, only: %i(show index)
 
   # GET /movies or /movies.json
@@ -57,11 +57,6 @@ class MoviesController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_movie
-    @movie = Movie.find(params[:id])
-  end
 
   # Only allow a list of trusted parameters through.
   def movie_params

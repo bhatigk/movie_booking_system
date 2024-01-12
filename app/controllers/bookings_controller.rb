@@ -15,6 +15,7 @@ class BookingsController < ApplicationController
     if params[:showtime_id].present?
       @showtime = Showtime.find(params[:showtime_id])
       @booking.show_date = Date.today unless params[:show_date].present?
+      @booking.showtime = @showtime
       @seats = @showtime.theater.seats.order(category: :desc, id: :asc).group_by(&:category)
       @booked_seats = @showtime.bookings.where(show_date: @booking.show_date).pluck(:seat_numbers).flatten
     end
@@ -29,7 +30,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to movie_booking_path(@movie, @booking), notice: "Booking was successfully created." }
+        format.html { redirect_to movie_booking_path(@movie, @booking), notice: "Ticket Booked." }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +42,7 @@ class BookingsController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update(booking_params)
-        format.html { redirect_to movie_booking_path(@movie, @booking), notice: "Booking was successfully updated." }
+        format.html { redirect_to movie_booking_path(@movie, @booking), notice: "Booking updated." }
         format.json { render :show, status: :ok, location: @booking }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +55,7 @@ class BookingsController < ApplicationController
     @booking.destroy!
 
     respond_to do |format|
-      format.html { redirect_to movie_bookings_url(@movie), notice: "Booking was successfully cancelled." }
+      format.html { redirect_to movie_bookings_url(@movie), notice: "Ticket cancelled." }
       format.json { head :no_content }
     end
   end

@@ -1,12 +1,5 @@
 <div id="<%= dom_id showtime %>">
   <p>
-    <strong>Timing:</strong>
-    <%= showtime.timing %>
+    <%= "#{showtime.timing}, #{showtime.movie.title}" %>
   </p>
-
-  <p>
-    <strong>Movie:</strong>
-    <%= showtime.movie_id %>
-  </p>
-
 </div>

@@ -5,4 +5,13 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable
 
   has_many :bookings, dependent: :destroy
+
+  enum role: %i(customer admin)
+  after_initialize :set_default_role, if: :new_record?
+
+  private
+
+  def set_default_role
+    self.role ||= :user
+  end
 end

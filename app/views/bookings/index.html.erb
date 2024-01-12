@@ -5,9 +5,16 @@
 <div id="bookings">
   <ol class="list-group list-group-numbered">
     <% @bookings.each do |booking| %>
-      <li class="list-group-item">
+      <li class="list-group-item d-flex align-items-center">
         <%= link_to movie_booking_path(@movie, booking), class: "ms-2" do %>
-          <%= render booking %>
+          <div class="d-flex justify-content-between align-items-center">
+            <%= render booking %>
+            <%= image_tag url_for(booking.movie.poster), class: 'thumbnail ms-2' %>
+          </div>
+
+          <div class="card-footer px-2 text-center">
+            <%= link_to "Book More Tickets", new_movie_booking_path(@movie), class: "fw-bold btn btn-primary" %>
+          </div>
         <% end %>
       </li>
     <% end %>
