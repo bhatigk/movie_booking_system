@@ -1,16 +1,21 @@
 <!-- app/views/bookings/new.html.erb -->
-<div class="container">
+<div class="container text-center">
   <%= render partial: "bookings/booking_details", locals: { movie: @movie, booking: @booking, showtime: @showtime } %>
   <% if @showtime.present? %>
     <%= render partial: 'bookings/form', locals: { seats: @seats, showtime: @showtime, booking: @booking } %>
   <% else %>
-    <% fetch_showtimes_by_movie(@movie).each do |theater, showtimes| %>
-      <div class="mt-4">
-        <h4><%= theater.name %></h4>
-        <% showtimes.each do |showtime| %>
-          <%= link_to "#{showtime.timing}", new_movie_booking_path(@movie, showtime_id: showtime.id), class: "btn btn-outline-primary me-2" %>
-        <% end %>
-      </div>
+    <% available_shows = fetch_showtimes_by_movie(@movie) %>
+    <% if available_shows.present? %>
+      <% available_shows.each do |theater, showtimes| %>
+        <div class="mt-4">
+          <h4><%= theater.name %></h4>
+          <% showtimes.each do |showtime| %>
+            <%= link_to "#{showtime.timing}", new_movie_booking_path(@movie, showtime_id: showtime.id), class: "btn btn-outline-primary me-2" %>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      No shows available
     <% end %>
   <% end %>
 </div>

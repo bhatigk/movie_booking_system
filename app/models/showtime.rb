@@ -3,7 +3,8 @@ class Showtime < ApplicationRecord
   belongs_to :theater
   has_many :bookings, dependent: :destroy
 
-  validates :timing, :from_date, :to_date, presence: true
+  validates :timing, presence: true, uniqueness: { scope: :theater }
+  validates :from_date, :to_date, presence: true
   validate :validate_date_range
 
   def available_dates

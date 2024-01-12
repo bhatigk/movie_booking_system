@@ -4,7 +4,7 @@
     <%= form.hidden_field :showtime_id, value: showtime.id %>
 
     <div class="row mb-4">
-      <div class="col-3">
+      <div class="col-3 text-start">
         <%= form.label "Select Date", class: "form-label" %>
         <%= form.select :show_date, options_for_select(showtime.available_dates, @booking.show_date), {}, class: 'form-select show-date-select' %>
       </div>
@@ -13,7 +13,7 @@
       </div>
     </div>
  
-    <div id="booking-seat-options mt-4">
+    <div id="booking-seat-options", class="mt-4">
       <%= render partial: 'bookings/seat_options', locals: { seats: seats, showtime: showtime } %>
     </div>
 

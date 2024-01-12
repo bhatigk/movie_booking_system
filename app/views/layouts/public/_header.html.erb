@@ -11,13 +11,13 @@
         <ul class="navbar-nav">
           <% if can? :manage, Theater %>
             <li class="nav-item">
-              <%= link_to "Theater", new_theater_path, class: "nav-link" %>
+              <%= link_to "Theater", theaters_path, class: "nav-link" %>
             </li>
           <% end %>
 
           <% if can? :manage, Showtime %>
             <li class="nav-item">
-              <%= link_to "Show", new_showtime_path, class: "nav-link" %>
+              <%= link_to "Show", showtimes_path, class: "nav-link" %>
             </li>
           <% end %>
 

@@ -9,5 +9,7 @@
       <% end %>
       <%= button_to "Cancel booking", movie_booking_path(@movie, @booking), method: :delete, class: "border-0 bg-white text-danger" %>
     </div>
+
+    <%= link_to "Back to movies", movies_path, class: "btn btn-primary mt-4" %>
   </div>
 </div>
