@@ -11,7 +11,7 @@
 
 * Configuration
   ```
-    bundle_install
+    bundle install
     yarn build
     yarn build:css
   ```
