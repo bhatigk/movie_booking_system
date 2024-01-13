@@ -25,6 +25,11 @@ movies_data = [
     title: 'Marry Christmas',
     genre: '2024 ‧ Thriller/Romance ‧ 2h 25m',
     poster: 'marry_christmas.jpeg'
+  },
+  {
+    title: "Hanu-Man",
+    genre: "2024 ‧ Action/Superhero ‧ 2h 30m",
+    poster: "hanuman.jpeg"
   }
 ]
 

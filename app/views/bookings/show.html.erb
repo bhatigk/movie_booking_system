@@ -2,7 +2,11 @@
   <p style="color: green"><%= notice %></p>
 
   <div class="text-center">
-    <%= render @booking %>
+  <%= render partial: "bookings/booking_details", locals: { movie: @booking.movie, booking: @booking, showtime: @booking.showtime } %>
+    Timing:
+    <%= @booking.showtime.timing %>,
+    Your Seat:
+    <%= @booking.alloted_seat_numbers %>
     <div class="d-flex justify-content-center">
       <% if current_user.admin? %>
         <%= link_to "Edit booking", edit_movie_booking_path(@movie, @booking) %> |

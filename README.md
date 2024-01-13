@@ -12,8 +12,8 @@
 * Configuration
   ```
     bundle_install
-    bundle exec rails db:migrate
-    bundle exec rails db:seed
+    yarn build
+    yarn build:css
   ```
 
 * Database creation
