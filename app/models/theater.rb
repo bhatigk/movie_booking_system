@@ -1,7 +1,7 @@
 class Theater < ApplicationRecord
   has_many :showtimes, dependent: :destroy
   has_many :seats, dependent: :destroy
-  
+
   validates :name, :city, presence: true
 
   after_create :create_seat
